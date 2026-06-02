@@ -1,0 +1,6 @@
+{
+  "name": "RWS Customs",
+  "description": "A website template for RWS Customs, built with a dark and structured theme.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
