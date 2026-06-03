@@ -1,101 +1,139 @@
-import { Search } from "lucide-react";
+import { useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export function Projects() {
-  const projects = [
-    {
-      title: "RWS Customs Shop",
-      category: "WELDING",
-      image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2070&auto=format&fit=crop",
-    },
-    {
-      title: "Hardin County Expansion",
-      category: "LAND CLEARING",
-      image: "https://images.unsplash.com/photo-1582299596162-87002b8da46e?q=80&w=2070&auto=format&fit=crop",
-    },
-    {
-      title: "Silsbee Municipal Trenching",
-      category: "TRENCHING",
-      image: "https://images.unsplash.com/photo-1541888086425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop",
-    },
-    {
-      title: "Private Estate Levelling",
-      category: "LEVELLING",
-      image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2071&auto=format&fit=crop",
-    },
-    {
-      title: "Pipeline Fabrication",
-      category: "WELDING",
-      image: "https://images.unsplash.com/photo-1533261763137-02eb665ab157?q=80&w=2070&auto=format&fit=crop",
-    },
-    {
-      title: "Commercial Site Prep",
-      category: "SITE PREP",
-      image: "https://images.unsplash.com/photo-1582299596162-87002b8da46e?q=80&w=2070&auto=format&fit=crop",
-    },
+  const reels = [
+    { src: "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1742270996938691%2F&show_text=false&width=267&t=0" },
+    { src: "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1615514826495413%2F&show_text=false&width=267&t=0" },
+    { src: "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1961081524450168%2F&show_text=false&width=267&t=0" },
+    { src: "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1874842989779086%2F&show_text=false&width=267&t=0" },
+    { src: "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1253472486607830%2F&show_text=false&width=267&t=0" }
   ];
 
-  return (
-    <section id="projects" className="bg-black text-white py-32 relative overflow-hidden flex flex-col items-center">
+  const [activeIndex, setActiveIndex] = useState(0);
 
-      <div className="relative z-10 w-full mb-20 px-6 text-center mt-20 flex items-center justify-center min-h-[160px]">
-        {/* Background Faded Text now centered directly with this block */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden z-0">
-          <h2 className="font-serif text-[6rem] md:text-[10rem] font-bold text-[#1a1a1a] leading-none whitespace-nowrap">
-            Projects
+  // True Infinite Carousel Handlers
+  const nextSlide = () => setActiveIndex((prev) => prev + 1);
+  const prevSlide = () => setActiveIndex((prev) => prev - 1);
+
+  const getVisibleSlides = () => {
+    const slides = [];
+    for (let i = activeIndex - 4; i <= activeIndex + 4; i++) {
+      const realIndex = ((i % reels.length) + reels.length) % reels.length;
+      slides.push({ 
+        ...reels[realIndex], 
+        realIndex, 
+        absoluteIndex: i, 
+        offset: i - activeIndex 
+      });
+    }
+    return slides;
+  };
+
+  return (
+    <section id="projects" className="bg-black text-white pt-16 lg:pt-32 pb-24 lg:pb-32 relative overflow-hidden flex flex-col">
+      
+      {/* Header Container */}
+      <div className="relative w-full flex flex-col items-center justify-center mb-4 lg:mb-8 pt-8">
+        {/* Background Faded Text */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0">
+          <h2 
+            className="font-heading text-[22vw] md:text-[18vw] font-bold text-transparent leading-[1.2] whitespace-nowrap tracking-tight py-12" 
+            style={{ WebkitTextStroke: "2px rgba(255, 255, 255, 0.10)" }}
+          >
+            GALLERY
           </h2>
         </div>
         
-        <div className="relative z-10 inline-flex flex-wrap items-center justify-center text-3xl md:text-5xl font-serif font-bold">
-          <span className="mr-4">I'm interested in</span>
-          <div className="relative inline-block border-b-2 border-brand-grey pb-1 pr-12 cursor-pointer mt-4 md:mt-0">
-            <span className="text-brand-grey">service</span>
-            <span className="absolute right-0 top-1/2 -translate-y-1/2 text-brand-grey text-2xl">⌄</span>
-          </div>
-          <button className="ml-6 mt-4 md:mt-0 w-12 h-12 rounded-full bg-brand-grey flex items-center justify-center hover:bg-white hover:text-black transition-colors text-black shrink-0">
-            <Search className="w-5 h-5" />
-          </button>
+        {/* Centered Title Header */}
+        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto mt-4 md:mt-8">
+          <h2 className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] uppercase text-white drop-shadow-2xl">
+            OUR <span className="text-brand-grey">WORK</span>
+          </h2>
         </div>
       </div>
 
-      {/* Strict Gallery Grid */}
-      <div className="relative z-10 w-full max-w-[90rem] mx-auto px-6 lg:px-12 pb-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, idx) => (
-            <div 
-              key={idx} 
-              className="relative w-full aspect-square group cursor-pointer overflow-hidden border border-white/10"
-            >
-              {/* Background Image */}
+      <div className="relative z-10 w-full">
+        {/* Center-Mode Infinite Carousel for Reels */}
+        <div className="relative w-full h-[500px] flex items-center justify-center overflow-hidden mt-2 md:mt-8">
+          
+          {/* Navigation Arrows on Top of Carousel */}
+          <button 
+            onClick={prevSlide}
+            className="absolute left-2 md:left-8 z-50 w-12 h-12 md:w-16 md:h-16 bg-white text-black flex items-center justify-center hover:bg-brand-grey hover:scale-105 transition-all"
+            aria-label="Previous reel"
+          >
+            <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" />
+          </button>
+          
+          <button 
+            onClick={nextSlide}
+            className="absolute right-2 md:right-8 z-50 w-12 h-12 md:w-16 md:h-16 bg-white text-black flex items-center justify-center hover:bg-brand-grey hover:scale-105 transition-all"
+            aria-label="Next reel"
+          >
+            <ChevronRight className="w-6 h-6 md:w-8 md:h-8" />
+          </button>
+
+          {getVisibleSlides().map((slide) => {
+            const isCenter = slide.offset === 0;
+            const zIndex = 20 - Math.abs(slide.offset);
+            
+            const opacity = Math.abs(slide.offset) >= 3 ? 0 : 1;
+            const scale = 1;
+            const pointerEvents = Math.abs(slide.offset) >= 3 ? 'none' : 'auto';
+            const translatePercent = slide.offset * 110;
+
+            return (
               <div 
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110"
-                style={{ backgroundImage: `url(${project.image})` }}
-              />
-              
-              {/* Overlays */}
-              <div className="absolute inset-0 bg-black/40 transition-opacity duration-500 group-hover:opacity-0" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-              
-              {/* Content visible by default, sliding up on hover */}
-              <div className="absolute inset-0 p-8 flex flex-col justify-end translate-y-8 transition-transform duration-500 group-hover:translate-y-0">
-                <p className="font-sans text-xs tracking-[0.2em] font-bold uppercase mb-3 text-brand-grey drop-shadow-md">
-                  {project.category}
-                </p>
-                <h3 className="font-serif text-3xl md:text-4xl font-bold leading-tight drop-shadow-lg">
-                  {project.title}
-                </h3>
+                key={slide.absoluteIndex} 
+                className="absolute w-[267px] h-[476px] bg-[#111] transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group rounded-xl border border-white/10 flex items-center justify-center shadow-2xl"
+                style={{
+                  transform: `translateX(${translatePercent}%) scale(${scale})`,
+                  zIndex,
+                  opacity,
+                  pointerEvents
+                }}
+              >
+                <iframe 
+                  src={slide.src}
+                  width="267" 
+                  height="476" 
+                  style={{ border: "none", overflow: "hidden" }} 
+                  scrolling="no" 
+                  frameBorder="0" 
+                  allowFullScreen={true} 
+                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                  className="rounded-lg"
+                  title={`Facebook Reel ${slide.realIndex + 1}`}
+                ></iframe>
                 
-                {/* Reveal button */}
-                <div className="mt-6 overflow-hidden">
-                  <div className="inline-flex items-center gap-2 text-sm font-sans font-semibold uppercase tracking-widest translate-y-full opacity-0 transition-all duration-500 delay-100 group-hover:translate-y-0 group-hover:opacity-100">
-                    <span className="border-b border-white pb-1">View Details</span>
-                    <span className="text-brand-grey ml-2">→</span>
-                  </div>
-                </div>
+                {/* Overlay to intercept clicks if NOT the center slide */}
+                {!isCenter && (
+                  <div 
+                    className="absolute inset-0 bg-black/60 cursor-pointer z-10 rounded-lg" 
+                    onClick={() => setActiveIndex(slide.absoluteIndex)}
+                  ></div>
+                )}
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
+
+      {/* CTA Button */}
+      <div className="mt-4 md:mt-6 flex justify-center w-full px-6 relative z-10">
+        <Link 
+          to="/gallery" 
+          className="group relative inline-flex items-center justify-center overflow-hidden bg-white text-black px-10 py-5 font-sans font-bold tracking-widest uppercase text-sm border border-transparent hover:border-white transition-colors"
+        >
+          <span className="absolute inset-0 w-full h-full bg-black -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out z-0"></span>
+          <span className="relative z-10 group-hover:text-white transition-colors duration-300 ease-out">
+            View Full Gallery
+          </span>
+        </Link>
+      </div>
+
     </section>
   );
 }

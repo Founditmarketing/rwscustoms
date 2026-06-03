@@ -1,51 +1,91 @@
+import { Link } from "react-router-dom";
+
 export function About() {
   return (
-    <section id="about" className="bg-black text-white relative py-40 flex flex-col items-center overflow-hidden">
-      
-      {/* Circle Graphic Line top-left */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-        <svg 
-          viewBox="0 0 100 100" 
-          className="absolute top-[-10%] left-[-10%] w-[60%] md:w-[40%] text-brand-grey opacity-20" 
-          fill="none" 
-          stroke="currentColor" 
-          strokeWidth="0.5"
-        >
-            <circle cx="50" cy="50" r="48" />
-        </svg>
-      </div>
-
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 flex flex-col items-center">
+    <>
+      {/* About Content Section */}
+      <section id="about" className="bg-black text-white relative py-16 lg:py-32 flex justify-center overflow-hidden border-t border-white/10">
         
-        {/* Top Header Text */}
-        <div className="text-center w-full mb-16 relative">
-          <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold leading-tight">
-            The RWS Experience,
-            <br/> Built on <span className="text-brand-grey font-serif">Trust</span>
+        {/* Background Faded Text */}
+        <div className="absolute inset-y-0 left-0 w-full lg:w-[70%] flex items-start pt-6 lg:pt-4 justify-center pointer-events-none select-none z-0">
+          <h2 
+            className="font-heading text-[16vw] lg:text-[11vw] font-bold text-transparent leading-none whitespace-nowrap tracking-tight" 
+            style={{ WebkitTextStroke: "2px rgba(255, 255, 255, 0.11)" }}
+          >
+            OUR STORY
           </h2>
         </div>
 
-        {/* Large Overlapping Image Area */}
-        <div className="relative w-full max-w-5xl mx-auto aspect-[16/9] md:aspect-[21/9]">
-            <div 
-                className="absolute inset-x-4 md:inset-x-12 inset-y-0 bg-cover bg-center z-10"
-                style={{ backgroundImage: `url('https://images.unsplash.com/photo-1541888086425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop')` }}
-            />
+        {/* Full Bleed Image (Desktop Only) - Completely escapes padding/grid */}
+        <div className="hidden lg:block absolute right-0 top-0 bottom-0 w-[30%] group overflow-hidden z-0">
+          <div 
+            className="absolute inset-0 bg-cover bg-center opacity-80 transition-all duration-700 group-hover:scale-105" 
+            style={{ backgroundImage: "url(/rwsimage2.jpg)" }}
+          />
+          {/* Brackets */}
+          <div className="absolute top-12 left-12 w-12 h-12 border-t-[3px] border-l-[3px] border-brand-grey z-20 transition-transform duration-700 group-hover:-translate-x-2 group-hover:-translate-y-2"></div>
+          <div className="absolute bottom-12 right-12 w-12 h-12 border-b-[3px] border-r-[3px] border-brand-grey z-20 transition-transform duration-700 group-hover:translate-x-2 group-hover:translate-y-2"></div>
+          {/* Left Border Accent */}
+          <div className="absolute border-l-[3px] border-brand-grey top-0 bottom-0 left-0 z-20 scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-700"></div>
         </div>
 
-        {/* Text Block partially over/under image */}
-        <div className="relative z-20 w-full max-w-3xl mx-auto mt-12 md:mt-[-50px] md:self-end md:mr-12 bg-black/80 backdrop-blur-sm p-8 md:p-12 border border-[#222]">
-           <p className="font-sans text-gray-300 text-lg md:text-xl leading-relaxed font-light mb-8">
-              Our success is built on a foundation of reliability, relationships, ingenuity, and proven outcomes. We have a passion for elevating the business of building and ensuring an exceptional experience for every client we serve in Silsbee and beyond.
-           </p>
-           <a 
-              href="#" 
-              className="inline-block bg-brand-grey text-white font-sans font-bold text-sm tracking-widest uppercase px-8 py-4 transition-transform hover:scale-105 hover:bg-white hover:text-black"
-            >
-              Learn More
-            </a>
+        <div className="w-full max-w-[90rem] mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center relative z-10">
+          
+          {/* Left Side - Content */}
+          <div className="relative flex flex-col items-start w-full lg:col-span-7 xl:col-span-8 z-10">
+            <h2 className="font-heading text-5xl md:text-6xl lg:text-[5.5rem] font-normal leading-[1.1] mb-8">
+              BEYOND THE<br/>
+              <span className="text-brand-grey">METAL</span>
+            </h2>
+
+            <div className="flex flex-col gap-6 font-sans text-gray-300 text-base md:text-lg leading-relaxed mb-10 max-w-2xl">
+              <p>
+                RWS Customs offers premium custom welding services, land clearing, dirt spreading and leveling, stump grinding, trenching services, trailer rentals, and much more.
+              </p>
+              <p>
+                Built on a foundation of grit and precise engineering, we don't just clear land; we shape it. We don't just weld metal; we forge solutions designed to weather any storm and bear any load.
+              </p>
+              <p>
+                Our operations are rooted in East Texas pride, ensuring every cut, weld, and level meets uncompromising industrial standards.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 mt-2">
+              <Link 
+                to="/about" 
+                className="group relative inline-flex items-center justify-center overflow-hidden bg-white text-black px-10 py-5 font-sans font-bold tracking-widest uppercase text-sm"
+              >
+                <span className="absolute inset-0 w-full h-full bg-brand-grey -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out z-0"></span>
+                <span className="relative z-10 group-hover:text-white transition-colors duration-300 ease-out">
+                  LEARN MORE
+                </span>
+              </Link>
+              
+              <Link 
+                to="/contact" 
+                className="group relative inline-flex items-center justify-center overflow-hidden bg-transparent border border-white/20 text-white px-10 py-5 font-sans font-bold tracking-widest uppercase text-sm hover:border-brand-grey transition-colors duration-300"
+              >
+                <span className="absolute inset-0 w-full h-full bg-brand-grey translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></span>
+                <span className="relative z-10 group-hover:text-white transition-colors duration-300 ease-out">
+                  GET A QUOTE
+                </span>
+              </Link>
+            </div>
+          </div>
+
+          {/* Right Side - Visuals (Mobile Fallback) */}
+          <div className="lg:hidden relative w-full h-[500px] mt-12 group overflow-hidden z-0 lg:col-span-5">
+            <div 
+              className="absolute inset-0 bg-cover bg-center opacity-80 transition-all duration-700 group-hover:scale-105" 
+              style={{ backgroundImage: "url(/rwsimage2.jpg)" }}
+            />
+            {/* Brackets */}
+            <div className="absolute top-8 left-8 w-12 h-12 border-t-[3px] border-l-[3px] border-brand-grey z-20 transition-transform duration-700 group-hover:-translate-x-2 group-hover:-translate-y-2"></div>
+            <div className="absolute bottom-8 right-8 w-12 h-12 border-b-[3px] border-r-[3px] border-brand-grey z-20 transition-transform duration-700 group-hover:translate-x-2 group-hover:translate-y-2"></div>
+          </div>
+
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

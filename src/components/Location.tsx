@@ -1,54 +1,77 @@
 export function Location() {
   return (
-    <section id="location" className="bg-white text-black py-32 px-6 lg:px-12 relative overflow-hidden flex items-center min-h-[800px]">
+    <section id="location" className="relative flex flex-col bg-white text-black overflow-hidden">
       
-      {/* Rotated background text */}
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 -rotate-90 pointer-events-none origin-left ml-16 md:ml-32">
-        <h2 className="font-serif text-[6rem] md:text-[10rem] font-bold text-[#f5f5f5] leading-none whitespace-nowrap">
-          Visit & Connect
-        </h2>
-      </div>
-
-      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 ml-12 md:ml-48">
+      <div className="relative z-10 flex flex-col lg:flex-row w-full">
         
-        {/* Map Container */}
-        <div className="flex-1 w-full aspect-square md:aspect-[4/3] bg-gray-200 relative overflow-hidden group">
-          {/* Replace this div with an actual Google Maps iframe if needed */}
+        {/* Map Half (Left Side, Wider) */}
+        <div className="w-full lg:w-3/5 h-[400px] lg:h-auto lg:min-h-[600px] relative order-2 lg:order-1 overflow-hidden flex items-center justify-center">
+          
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113426.69747971701!2d-94.27072051680183!3d30.348637777174696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x863914a27f6eab9d%3A0xeab49aeeb715dcaf!2s3701%20Brownlea%20Rd%2C%20Silsbee%2C%20TX%2077656!5e0!3m2!1sen!2sus!4v1701838491823!5m2!1sen!2sus" 
+            src="https://maps.google.com/maps?q=3701%20Brownlea%20Rd,%20Silsbee,%20TX%2077656&t=h&z=13&ie=UTF8&iwloc=&output=embed" 
             width="100%" 
             height="100%" 
             style={{ border: 0 }} 
             allowFullScreen={false} 
             loading="lazy" 
             referrerPolicy="no-referrer-when-downgrade"
-            className="absolute inset-0 grayscale contrast-125 hover:grayscale-0 transition-all duration-700"
+            className="absolute inset-0 w-full h-full object-cover z-0 filter contrast-[1.15] saturate-[1.2]"
           ></iframe>
-        </div>
 
-        {/* Contact Info */}
-        <div className="flex-1 flex flex-col justify-center">
-          <div className="mb-12">
-            <h3 className="font-sans text-xs tracking-widest font-bold uppercase mb-4 text-brand-grey">Location</h3>
-            <h4 className="font-serif text-3xl md:text-5xl font-bold leading-tight mb-4">
-              RWS Customs<br />Headquarters
-            </h4>
-            <p className="font-sans text-gray-600 text-lg">
-              3701 Brownlea Rd<br />
-              Silsbee, TX 77656
-            </p>
-          </div>
+          {/* Subtle Vignette Overlay for premium feel */}
+          <div className="absolute inset-0 shadow-[inset_0_0_120px_rgba(0,0,0,0.4)] pointer-events-none z-10"></div>
 
-          <div>
-            <h3 className="font-sans text-xs tracking-widest font-bold uppercase mb-4 text-brand-grey">Direct Line</h3>
-            <h4 className="font-serif text-3xl md:text-4xl font-bold leading-tight mb-4">
-              <a href="tel:4096519394" className="hover:text-brand-grey transition-colors">(409) 651-9394</a>
-            </h4>
-             <h4 className="font-serif text-2xl md:text-3xl font-bold leading-tight break-all">
-              <a href="mailto:rwscustomwork@gmail.com" className="hover:text-brand-grey transition-colors">rwscustomwork@gmail.com</a>
-            </h4>
+
+
+          {/* Service Area Radius Overlay */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
+            <div className="w-[75%] max-w-[450px] aspect-square rounded-full border-2 border-brand-grey bg-brand-grey/20 relative shadow-[inset_0_0_50px_rgba(0,0,0,0.2)]"></div>
           </div>
         </div>
+
+        {/* Content Half (Right Side) */}
+        <div className="w-full lg:w-2/5 relative flex items-center p-8 lg:p-16 xl:p-24 order-1 lg:order-2 overflow-hidden">
+          
+          {/* Background Faded Text in the right column */}
+          <div className="absolute top-0 left-0 w-full flex justify-center pointer-events-none select-none z-0 pt-12 lg:pt-16">
+            <h2 
+              className="font-heading text-[28vw] lg:text-[14vw] font-bold text-transparent leading-[0.8] whitespace-nowrap tracking-tighter" 
+              style={{ WebkitTextStroke: "2px rgba(0, 0, 0, 0.04)" }}
+            >
+              VISIT
+            </h2>
+          </div>
+
+          <div className="relative z-10 w-full max-w-xl mx-auto mt-16">
+            <h4 className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.1] mb-8">
+              RWS <span className="text-transparent break-words hyphens-auto" style={{ WebkitTextStroke: "1px black" }}>HEADQUARTERS</span>
+            </h4>
+            
+            <div className="flex flex-col gap-8 font-sans">
+              <div>
+                <p className="text-black text-lg md:text-xl font-medium leading-relaxed">
+                  3701 Brownlea Rd<br />
+                  Silsbee, TX 77656
+                </p>
+                <p className="text-brand-grey font-bold text-sm tracking-wider uppercase mt-2">
+                  Serving Silsbee and all surrounding areas.
+                </p>
+              </div>
+
+              <div className="w-12 h-[2px] bg-brand-grey"></div>
+
+              <div className="flex flex-col gap-2">
+                <a href="tel:4096519394" className="text-black text-2xl md:text-3xl font-bold hover:text-brand-grey transition-colors">
+                  (409) 651-9394
+                </a>
+                <a href="mailto:rwscustomwork@gmail.com" className="text-gray-500 text-lg hover:text-brand-grey transition-colors break-all">
+                  rwscustomwork@gmail.com
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   );
