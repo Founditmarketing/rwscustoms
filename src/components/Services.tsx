@@ -63,8 +63,9 @@ export function Services() {
           className="flex-1 w-full lg:w-auto flex gap-6 overflow-x-auto snap-x hide-scrollbar pb-8 pt-4 lg:pl-12"
         >
            {services.map((service, idx) => (
-            <div 
+            <Link 
               key={idx} 
+              to={`/services/${service.slug}`}
               className="w-[300px] md:w-[340px] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.08)] flex-shrink-0 flex flex-col snap-center group cursor-pointer relative overflow-hidden transition-all duration-500 border border-gray-100 hover:border-brand-grey/30"
             >
               {/* Top Hover Accent Line */}
@@ -79,33 +80,33 @@ export function Services() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
                 
                 {/* Service Number Badge */}
-                <div className="absolute bottom-0 left-0 bg-white px-5 py-3 font-heading font-bold text-lg md:text-xl text-black z-10 flex items-center justify-center">
+                <div className="absolute bottom-0 left-0 bg-white group-hover:bg-black px-5 py-3 font-heading font-bold text-lg md:text-xl text-black group-hover:text-white z-10 flex items-center justify-center transition-colors duration-500">
                   0{idx + 1}
                 </div>
               </div>
 
               {/* Content Section */}
-              <div className="p-8 flex flex-col flex-1 relative bg-white">
-                <h3 className="font-heading text-lg md:text-xl font-bold uppercase mb-4 tracking-wide text-black leading-tight group-hover:text-brand-grey transition-colors duration-300">
+              <div className="p-8 flex flex-col flex-1 relative bg-white group-hover:bg-black transition-colors duration-500">
+                <h3 className="font-heading text-lg md:text-xl font-bold uppercase mb-4 tracking-wide text-black leading-tight group-hover:text-white transition-colors duration-300">
                   {service.title}
                 </h3>
                 
                 <div className="w-10 h-[2px] bg-brand-grey/40 mb-6 group-hover:bg-brand-grey transition-colors duration-300"></div>
 
-                <p className="font-sans text-xs md:text-sm text-gray-500 mb-8 leading-relaxed flex-1">
+                <p className="font-sans text-xs md:text-sm text-gray-500 mb-8 leading-relaxed flex-1 group-hover:text-gray-300 transition-colors duration-500">
                   {service.shortDescription}
                 </p>
 
-                <Link to={`/services/${service.slug}`} className="mt-auto flex items-center justify-between border-t border-gray-100 pt-6 group/link cursor-pointer">
-                  <span className="font-sans text-xs font-bold tracking-[0.2em] uppercase text-[#444] transition-colors group-hover/link:text-brand-grey">
+                <div className="mt-auto flex items-center justify-between border-t border-gray-100 group-hover:border-white/10 pt-6 group/link cursor-pointer transition-colors duration-500">
+                  <span className="font-sans text-xs font-bold tracking-[0.2em] uppercase text-[#444] group-hover:text-white transition-colors duration-500">
                     READ MORE
                   </span>
-                  <span className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-brand-grey group-hover/link:bg-brand-grey group-hover/link:text-white group-hover/link:border-brand-grey transition-all duration-300">
+                  <span className="w-10 h-10 rounded-full border border-gray-200 group-hover:border-white/20 flex items-center justify-center text-brand-grey group-hover/link:bg-brand-grey group-hover/link:text-white group-hover/link:border-brand-grey transition-all duration-300">
                     <span className="transform group-hover/link:translate-x-0.5 transition-transform duration-300">→</span>
                   </span>
-                </Link>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
