@@ -92,8 +92,8 @@ export function FloatingContact() {
                       required
                     />
                     <input 
-                      type="email" 
-                      placeholder="Email" 
+                      type="tel" 
+                      placeholder="Phone Number" 
                       className="w-full bg-white/5 border border-white/10 text-white px-4 py-3 text-sm focus:outline-none focus:border-brand-grey transition-colors placeholder:text-white/30"
                       required
                     />
