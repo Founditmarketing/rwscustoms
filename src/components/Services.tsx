@@ -38,7 +38,7 @@ export function Services() {
               <span className="text-brand-grey">JOBS</span>
             </h2>
           </div>
-          <p className="font-sans text-gray-600 text-sm md:text-base mb-10 font-medium leading-relaxed max-w-sm pl-6">
+          <p className="font-sans text-gray-600 text-sm md:text-base mb-10 font-medium leading-relaxed max-w-sm pl-6 pr-6 lg:pr-0">
             RWS Customs delivers industrial-grade land clearing, custom fabrication, and site prep. We have the equipment, the experience, and the drive to get your project done right.
           </p>
           <div className="flex space-x-4 pl-6">

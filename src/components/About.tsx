@@ -4,7 +4,7 @@ export function About() {
   return (
     <>
       {/* About Content Section */}
-      <section id="about" className="bg-black text-white relative py-16 lg:py-32 flex justify-center overflow-hidden border-t border-white/10">
+      <section id="about" className="bg-black text-white relative pt-16 pb-0 lg:py-32 flex justify-center overflow-hidden border-t border-white/10">
         
         {/* Background Faded Text */}
         <div className="absolute inset-y-0 left-0 w-full lg:w-[70%] flex items-start pt-6 lg:pt-4 justify-center pointer-events-none select-none z-0">
@@ -74,7 +74,7 @@ export function About() {
           </div>
 
           {/* Right Side - Visuals (Mobile Fallback) */}
-          <div className="lg:hidden relative w-full h-[500px] mt-12 group overflow-hidden z-0 lg:col-span-5">
+          <div className="lg:hidden relative w-[100vw] left-1/2 -translate-x-1/2 aspect-square mt-12 group overflow-hidden z-0 lg:col-span-5">
             <div 
               className="absolute inset-0 bg-cover bg-center opacity-80 transition-all duration-700 group-hover:scale-105" 
               style={{ backgroundImage: "url(/rwsimage2.jpg)" }}
