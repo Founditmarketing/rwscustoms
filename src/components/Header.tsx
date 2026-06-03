@@ -103,6 +103,7 @@ export function Header() {
         {/* Bottom Bar (Desktop Only) */}
         <div className="hidden lg:flex bg-black/30 backdrop-blur-[2px] text-white h-12 items-center justify-center border-b border-white/10 relative z-40">
           <nav className="flex items-center space-x-12 text-xs font-semibold tracking-widest uppercase">
+            <Link to="/" className="hover:text-brand-grey transition-colors">Home</Link>
             
             {/* Services Dropdown */}
             <div className="relative group/nav h-full flex items-center">
@@ -186,6 +187,7 @@ export function Header() {
           {/* Mobile Menu Links */}
           <div className="flex-1 flex flex-col py-8 px-8">
             <nav className="flex flex-col space-y-6 text-2xl font-heading font-bold tracking-widest uppercase mb-12">
+              <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-grey transition-colors">Home</Link>
               
               {/* Mobile Services Accordion */}
               <div className="flex flex-col">
