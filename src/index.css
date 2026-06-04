@@ -35,3 +35,6 @@ video::-webkit-media-controls-start-playback-button {
 video::-webkit-media-controls {
   display: none !important;
 }
+video::-webkit-media-controls-overlay-play-button {
+  display: none !important;
+}
