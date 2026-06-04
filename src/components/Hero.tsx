@@ -1,22 +1,30 @@
 import { motion } from "motion/react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { LoadContext } from "../App";
 import { servicesData } from "../data/services";
 
 export function Hero() {
   const hasLoaded = useContext(LoadContext);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
   return (
     <section className="relative h-screen min-h-[600px] w-full flex items-center bg-black overflow-hidden pt-16 lg:pt-28">
+      {/* Background Image Fallback (Prevents iOS Play Button Bug) */}
+      <img 
+        src="/rwsmobilehero.jpeg" 
+        alt="RWS Customs Background" 
+        className={`absolute inset-0 z-0 w-full h-full object-cover pointer-events-none transition-opacity duration-1000 ${isVideoPlaying ? 'opacity-0' : 'opacity-60'}`}
+      />
+
       {/* Background Video */}
       <video
         autoPlay
         loop
         muted
         playsInline
-        poster="/rwsmobilehero.jpeg"
-        className="absolute inset-0 z-0 w-full h-full object-cover opacity-60 pointer-events-none"
+        onPlaying={() => setIsVideoPlaying(true)}
+        className={`absolute inset-0 z-0 w-full h-full object-cover pointer-events-none transition-opacity duration-1000 ${isVideoPlaying ? 'opacity-60' : 'opacity-0'}`}
       >
         <source src="/rwsherovideo2.mp4" type="video/mp4" />
       </video>
