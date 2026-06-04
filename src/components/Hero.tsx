@@ -15,6 +15,7 @@ export function Hero() {
         loop
         muted
         playsInline
+        poster="/rwsmobilehero.jpeg"
         className="absolute inset-0 z-0 w-full h-full object-cover opacity-60 pointer-events-none"
       >
         <source src="/rwsherovideo2.mp4" type="video/mp4" />
